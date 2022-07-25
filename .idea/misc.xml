@@ -4,12 +4,16 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/background_rectangle.xml" value="0.1" />
+        <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/ic_add.xml" value="0.2555" />
+        <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/ic_close.xml" value="0.2555" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/ic_short_drink.xml" value="0.1" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/activity_main.xml" value="0.34148550724637683" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/fragment_login.xml" value="0.34148550724637683" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/fragment_note_detail.xml" value="0.34148550724637683" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/fragment_notes_list.xml" value="0.34148550724637683" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/item_cocktail.xml" value="0.33" />
+        <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/item_common_cocktail.xml" value="0.36666666666666664" />
+        <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/item_ingredient.xml" value="0.36666666666666664" />
       </map>
     </option>
   </component>

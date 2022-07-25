@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">justBarAdmin</string>
+    <string name="const_empty_cocktails">Add some cocktails to be shown</string>
+
+    <!-- Const text -->
+    <string name="const_detail_title">Add Cocktail</string>
+    <string name="const_is_iba">Is IBA?</string>
+    <string name="const_taste">Taste</string>
+    <string name="const_glass_type">Glass Type</string>
+    <string name="const_alcohol">Alcohol</string>
+    <string name="const_ingredients">Ingredients</string>
+    <string name="const_extra">Extra recipe</string>
+    <string name="const_common_cocktails">Common cocktails</string>
+
+    <!-- Hints -->
+    <string name="hint_login">Login (e-mail)</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_cocktail_title">Cocktail Title</string>
+    <string name="hint_recipe">Recipe</string>
+    <string name="hint_alcohol_per">Alcohol percentage</string>
+    <string name="hint_volume">Volume</string>
+
+    <!-- Buttons -->
+    <string name="btn_login">Login</string>
+    <string name="btn_add">Add</string>
+    <string name="btn_save">Accept</string>
+
+    <!-- Taste Enum values -->
+    <string name="taste_sweet">Sweet</string>
+    <string name="taste_sour">Sour</string>
+    <string name="taste_sweet_sour">Sweet-Sour</string>
+    <string name="taste_strong">Strong</string>
+    <string name="taste_salty">Salty</string>
+
+    <!-- Arrays -->
+    <string-array name="tastes">
+        <item>Sweet</item>
+        <item>Sour</item>
+        <item>Strong</item>
+    </string-array>
+
+    <string-array name="glasses">
+        <item>Short</item>
+        <item>Middle</item>
+        <item>Long</item>
+    </string-array>
 </resources>
