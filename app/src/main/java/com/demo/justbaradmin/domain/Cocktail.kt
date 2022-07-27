@@ -1,5 +1,9 @@
 package com.demo.justbaradmin.domain
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Cocktail(
     var title: String = "",
     var glassType: GlassType = GlassType.LONG,
@@ -12,4 +16,4 @@ data class Cocktail(
     var recipe: String = "",
     var commonCocktails: List<String> = listOf(),
     var alternativeIngredients: List<Map<String, Int>> = listOf()
-)
+): Parcelable

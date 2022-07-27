@@ -396,8 +396,8 @@
                 android:layout_marginTop="4dp"
 
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_ingredient"
-                tools:itemCount="3"
+                tools:listitem="@layout/item_recipe"
+                tools:itemCount="2"
 
                 app:layout_constraintTop_toBottomOf="@+id/btn_add_extra"/>
 

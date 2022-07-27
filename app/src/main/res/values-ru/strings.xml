@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="const_empty_cocktails">Добавьте коктейли, чтобы они отобразились</string>
+    <string name="const_detail_title">Добавить коктейль</string>
+    <string name="const_is_iba">От IBA?</string>
+    <string name="const_taste">Вкус</string>
+    <string name="const_glass_type">Тип стакана</string>
+    <string name="const_alcohol">Алкоголь</string>
+    <string name="const_ingredients">Ингридиенты</string>
+    <string name="const_extra">Доп. рецепты</string>
+    <string name="const_common_cocktails">Похожие</string>
+    <string name="format_alc">алк:</string>
+    <string name="format_taste">вкус:</string>
+    <string name="format_millis">%sмл</string>
+    <string name="hint_login">Логин (e-mail)</string>
+    <string name="hint_password">Пароль</string>
+    <string name="hint_cocktail_title">Название Коктейля</string>
+    <string name="hint_recipe">Рецепт</string>
+    <string name="hint_alcohol_per">Градус</string>
+    <string name="hint_volume">Объём</string>
+    <string name="btn_login">Логин</string>
+    <string name="btn_add">Добавить</string>
+    <string name="btn_save">Принять</string>
+    <string name="taste_sweet">Сладкий</string>
+    <string name="taste_sour">Кислый</string>
+    <string name="taste_sweet_sour">Кисло-Сладкий</string>
+    <string name="taste_strong">Крепкий</string>
+    <string name="taste_salty">Солёный</string>
+    <string name="dialog_title_error">Возникла ошибка</string>
+    <string name="toast_login">Вход выполнен успешно</string>
+    <string name="toast_register">Регистрация выполнена успешно</string>
+    <string name="const_recipe">Рецепт</string>
+</resources>

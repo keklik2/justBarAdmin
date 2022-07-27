@@ -6,12 +6,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 enum class TasteType(
-    val title: String,
+    val titleRes: Int,
     val res: Int
 ) : Parcelable {
-    SWEET("SWEET", R.string.taste_sweet),
-    SOUR("SOUR", R.string.taste_sour),
-    SWEET_SOUR("SWEET_SOUR", R.string.taste_sweet_sour),
-    STRONG("STRONG", R.string.taste_strong),
-    SALTY("SALTY", R.string.taste_salty);
+    SWEET(R.string.taste_sweet, R.string.taste_sweet),
+    SOUR(R.string.taste_sour, R.string.taste_sour),
+    SWEET_SOUR(R.string.taste_sweet_sour, R.string.taste_sweet_sour),
+    STRONG(R.string.taste_strong, R.string.taste_strong),
+    SALTY(R.string.taste_salty, R.string.taste_salty);
 }

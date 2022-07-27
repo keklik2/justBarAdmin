@@ -14,6 +14,8 @@
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/item_cocktail.xml" value="0.33" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/item_common_cocktail.xml" value="0.36666666666666664" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/item_ingredient.xml" value="0.36666666666666664" />
+        <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/layout/item_recipe.xml" value="0.36666666666666664" />
+        <entry key="..\:/Digex Co/justBarAdmin/architecture/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.196" />
       </map>
     </option>
   </component>

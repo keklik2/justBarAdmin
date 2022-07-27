@@ -2,6 +2,7 @@ package com.demo.architecture.files
 
 import android.Manifest
 import android.net.Uri
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment

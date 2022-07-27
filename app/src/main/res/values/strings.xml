@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">justBarAdmin</string>
+    <string name="app_name" translatable="false">justBarAdmin</string>
     <string name="const_empty_cocktails">Add some cocktails to be shown</string>
 
     <!-- Const text -->
@@ -11,6 +11,13 @@
     <string name="const_ingredients">Ingredients</string>
     <string name="const_extra">Extra recipe</string>
     <string name="const_common_cocktails">Common cocktails</string>
+    <string name="const_recipe">Recipe</string>
+
+    <!-- Formats -->
+    <string name="format_alc">alc: </string>
+    <string name="format_taste">taste: </string>
+    <string name="format_alc_percentage" translatable="false">~%s°</string>
+    <string name="format_millis">%sml</string>
 
     <!-- Hints -->
     <string name="hint_login">Login (e-mail)</string>
@@ -31,6 +38,13 @@
     <string name="taste_sweet_sour">Sweet-Sour</string>
     <string name="taste_strong">Strong</string>
     <string name="taste_salty">Salty</string>
+    
+    <!-- Dialogs -->
+    <string name="dialog_title_error">Error occurred</string>
+
+    <!-- Toasts -->
+    <string name="toast_login">Login performed successfully</string>
+    <string name="toast_register">Register performed successfully</string>
 
     <!-- Arrays -->
     <string-array name="tastes">

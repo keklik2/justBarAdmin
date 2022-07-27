@@ -1,8 +1,12 @@
 package com.demo.architecture.helpers
 
+import android.app.Application
+import android.content.Context
 import android.net.Uri
+import android.provider.OpenableColumns
 import android.view.View
 import androidx.core.content.PermissionChecker
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.demo.architecture.R
 import java.text.DecimalFormat

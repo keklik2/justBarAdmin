@@ -39,7 +39,6 @@
 
         android:src="@drawable/ic_add"
 
-        android:backgroundColor="@color/white"
         android:backgroundTint="#FFFFFF"
         android:tint="@color/main"
 
