@@ -1,10 +1,15 @@
 package com.demo.justbaradmin.presentation.detail
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import com.demo.architecture.BaseViewModel
+import com.demo.architecture.dialogs.AppDialogContainer
+import com.demo.architecture.helpers.refactorInt
+import com.demo.architecture.helpers.refactorString
+import com.demo.justbaradmin.data.Server
 import com.demo.justbaradmin.domain.Cocktail
+import com.demo.justbaradmin.domain.GlassType
+import com.demo.justbaradmin.domain.TasteType
 import com.demo.justbaradmin.presentation.detail.adapters.CommonCocktail
 import com.demo.justbaradmin.presentation.detail.adapters.Ingredient
 import com.demo.justbaradmin.presentation.detail.adapters.Recipe
@@ -31,15 +36,83 @@ class DetailViewModel @Inject constructor(
     init {
         autorun(::cocktail) { item ->
             item?.let { cocktail ->
-                alcoholIngredients = cocktail.alcoholIngredients.toList().map { Ingredient(it.first, it.second) }.toMutableList()
-                otherIngredients = cocktail.otherIngredients.toList().map { Ingredient(it.first, it.second) }.toMutableList()
-                commonCocktails = cocktail.commonCocktails.map { CommonCocktail(it) }.toMutableList()
+                alcoholIngredients =
+                    cocktail.alcoholIngredients.toList().map { Ingredient(it.first, it.second) }
+                        .toMutableList()
+                otherIngredients =
+                    cocktail.otherIngredients.toList().map { Ingredient(it.first, it.second) }
+                        .toMutableList()
+                commonCocktails =
+                    cocktail.commonCocktails.map { CommonCocktail(it) }.toMutableList()
                 _alternativeRecipes.value = cocktail.alternativeIngredients.toMutableList().map {
                     Recipe(it.toList().map { Ingredient(it.first, it.second) }.toMutableList())
                 } as MutableList<Recipe>
             }
         }
     }
+
+    fun addOrEditCocktail(
+        title: String?,
+        recipe: String?,
+        alcoholPercentage: String?,
+        volume: String?,
+        isIba: Boolean,
+        glassType: GlassType,
+        taste: TasteType
+    ) {
+        val rTitle = refactorString(title)
+        val rRecipe = refactorString(recipe)
+        val rAlcoholPercentage = refactorInt(alcoholPercentage)
+        val rVolume = refactorInt(volume)
+
+        Server.addOrEditCocktail(
+            Cocktail(
+                rTitle,
+                glassType,
+                isIba,
+                rAlcoholPercentage,
+                rVolume,
+                getMapFromIngredients(alcoholIngredients),
+                getMapFromIngredients(otherIngredients),
+                taste,
+                rRecipe,
+                getListOfCommonCocktails(commonCocktails),
+                getListOfAlternativeRecipes(_alternativeRecipes.value?: mutableListOf())
+            ),
+            onSuccessCallback = {
+                showToast("Success") // replace with resId
+                exit()
+            },
+            onErrorCallback = {
+                showAlert(
+                    AppDialogContainer(
+                        "Error", // replace with resId
+                        it,
+                        positiveBtnCallback = {
+
+                        }
+                    )
+                )
+            }
+        )
+    }
+
+    private fun getMapFromIngredients(list: List<Ingredient>): Map<String, Int> =
+        mutableMapOf<String, Int>().apply {
+            list.forEach { put(it.title, it.volume) }
+        }
+
+    private fun getListOfCommonCocktails(list: List<CommonCocktail>): List<String> =
+        list.map { it.title }
+
+    private fun getListOfAlternativeRecipes(list: List<Recipe>): List<Map<String, Int>> =
+        mutableListOf<Map<String, Int>>().apply {
+            list.forEach {
+                add(mutableMapOf<String, Int>().apply {
+                    it.ingredients.forEach { put(it.title, it.volume) }
+                })
+            }
+        }
 
 
     /**
@@ -50,6 +123,7 @@ class DetailViewModel @Inject constructor(
             add(Ingredient("", 0))
         }
     }
+
     fun deleteAlcoholIngredient(ingredient: Ingredient) {
         alcoholIngredients = alcoholIngredients.toMutableList().apply {
             remove(ingredient)
@@ -61,6 +135,7 @@ class DetailViewModel @Inject constructor(
             add(Ingredient("", 0))
         }
     }
+
     fun deleteOtherIngredient(ingredient: Ingredient) {
         otherIngredients = otherIngredients.toMutableList().apply {
             remove(ingredient)
@@ -72,6 +147,7 @@ class DetailViewModel @Inject constructor(
             add(CommonCocktail(""))
         }
     }
+
     fun deleteCommonCocktail(cocktailTitle: CommonCocktail) {
         commonCocktails = commonCocktails.toMutableList().apply {
             remove(cocktailTitle)
@@ -82,6 +158,7 @@ class DetailViewModel @Inject constructor(
         val list = _alternativeRecipes.value
         _alternativeRecipes.value = list?.apply { add(Recipe(mutableListOf(Ingredient("", 0)))) }
     }
+
     fun deleteAlternativeRecipe(recipe: Recipe) {
         val list = _alternativeRecipes.value
         _alternativeRecipes.value = list?.apply { remove(recipe) }
@@ -89,8 +166,10 @@ class DetailViewModel @Inject constructor(
 
     fun addAlternativeIngredient(recipeIndex: Int) {
         val list = _alternativeRecipes.value
-        _alternativeRecipes.value = list?.apply { get(recipeIndex).ingredients.add(Ingredient("", 0)) }
+        _alternativeRecipes.value =
+            list?.apply { get(recipeIndex).ingredients.add(Ingredient("", 0)) }
     }
+
     fun deleteAlternativeIngredient(recipeIndex: Int, ingredient: Ingredient) {
         val list = _alternativeRecipes.value
         _alternativeRecipes.value = list?.apply { get(recipeIndex).ingredients.remove(ingredient) }

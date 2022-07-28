@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/background_rectangle.xml" value="0.1" />
+        <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/custom_thumb.xml" value="0.2555" />
+        <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/custom_track.xml" value="0.2555" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/ic_add.xml" value="0.2555" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/ic_close.xml" value="0.2555" />
         <entry key="..\:/Digex Co/justBarAdmin/app/src/main/res/drawable/ic_short_drink.xml" value="0.1" />

@@ -50,7 +50,9 @@
     <string-array name="tastes">
         <item>Sweet</item>
         <item>Sour</item>
+        <item>Sweet-Sour</item>
         <item>Strong</item>
+        <item>Salty</item>
     </string-array>
 
     <string-array name="glasses">
