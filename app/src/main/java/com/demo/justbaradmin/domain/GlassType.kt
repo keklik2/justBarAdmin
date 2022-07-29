@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 enum class GlassType(
     val title: String,
     val res: Int
-): Parcelable {
+) : Parcelable {
     LONG("LONG", R.drawable.ic_long_drink),
     MIDDLE("MIDDLE", R.drawable.ic_middle_drink),
     SHORT("SHORT", R.drawable.ic_short_drink);

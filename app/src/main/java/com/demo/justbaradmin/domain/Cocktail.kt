@@ -16,4 +16,4 @@ data class Cocktail(
     var recipe: String = "",
     var commonCocktails: List<String> = listOf(),
     var alternativeIngredients: List<Map<String, Int>> = listOf()
-): Parcelable
+) : Parcelable

@@ -20,4 +20,8 @@ object Screens {
     fun LoginFragment() = FragmentScreen {
         com.demo.justbaradmin.presentation.login.LoginFragment()
     }
+
+    fun MenuFragment() = FragmentScreen {
+        com.demo.justbaradmin.presentation.menu.MenuFragment()
+    }
 }

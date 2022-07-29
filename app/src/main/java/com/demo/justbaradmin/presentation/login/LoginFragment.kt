@@ -8,7 +8,7 @@ import com.demo.justbaradmin.databinding.FragmentLoginBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LoginFragment: BaseFragment(R.layout.fragment_login) {
+class LoginFragment : BaseFragment(R.layout.fragment_login) {
     override val binding: FragmentLoginBinding by viewBinding()
     override val vm: LoginViewModel by viewModels()
     override var setupListeners: (() -> Unit)? = {
@@ -17,11 +17,6 @@ class LoginFragment: BaseFragment(R.layout.fragment_login) {
     override var setupBinds: (() -> Unit)? = {
 
     }
-
-
-    /**
-     * Binds
-     */
 
     /**
      * Listeners

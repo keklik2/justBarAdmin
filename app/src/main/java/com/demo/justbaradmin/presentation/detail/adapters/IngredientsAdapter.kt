@@ -24,6 +24,13 @@ object IngredientsAdapter {
                         etAlcTitle.setText(item.title)
                         etAlcTitle.addTextChangedListener { item.title = it?.toString().orEmpty() }
                         etMilliliters.setText(item.volume.toString())
+                        etMilliliters.addTextChangedListener {
+                            val newVolume = it?.toString()
+                            item.volume =
+                                if (!newVolume.isNullOrEmpty() && !newVolume.isNullOrBlank())
+                                    newVolume.toInt()
+                                else 0
+                        }
                         btnDelete.setOnClickListener { onDeleteClickListener?.invoke(item) }
                     }
                 }

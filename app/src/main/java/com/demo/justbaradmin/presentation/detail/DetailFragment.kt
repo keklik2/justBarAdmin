@@ -2,6 +2,7 @@ package com.demo.justbaradmin.presentation.detail
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.demo.architecture.BaseFragment
@@ -14,6 +15,11 @@ import com.demo.justbaradmin.presentation.detail.adapters.AlternativeRecipesAdap
 import com.demo.justbaradmin.presentation.detail.adapters.CommonCocktailsAdapter
 import com.demo.justbaradmin.presentation.detail.adapters.IngredientsAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import io.github.anderscheow.validator.Validator
+import io.github.anderscheow.validator.rules.common.NotBlankRule
+import io.github.anderscheow.validator.rules.common.NotEmptyRule
+import io.github.anderscheow.validator.validation
+import io.github.anderscheow.validator.validator
 
 @AndroidEntryPoint
 class DetailFragment : BaseFragment(R.layout.fragment_note_detail) {
@@ -23,11 +29,13 @@ class DetailFragment : BaseFragment(R.layout.fragment_note_detail) {
         setupAddButtonsListeners()
         setupBackButtonListener()
         setupApplyButtonListener()
+        setupValidationListeners()
     }
     override var setupBinds: (() -> Unit)? = {
         setupAdaptersBinds()
         setupOnCocktailReceivedBind()
     }
+
 
     /**
      * Individual variables
@@ -50,6 +58,44 @@ class DetailFragment : BaseFragment(R.layout.fragment_note_detail) {
     private val alternativeRecipesAdapter by lazy {
         AlternativeRecipesAdapter.get(::vm)
     }
+
+
+    /**
+     * Validations
+     */
+    private val titleValidation by lazy {
+        validation(binding.tilCocktailTitle) {
+            rules {
+                +NotEmptyRule(ERR_EMPTY_TITLE)
+                +NotBlankRule(ERR_BLANK_TITLE)
+            }
+        }
+    }
+    private val recipeValidation by lazy {
+        validation(binding.tilRecipe) {
+            rules {
+                +NotEmptyRule(ERR_EMPTY_RECIPE)
+                +NotBlankRule(ERR_BLANK_RECIPE)
+            }
+        }
+    }
+    private val alcoholValidation by lazy {
+        validation(binding.tilAlcoholPer) {
+            rules {
+                +NotEmptyRule(ERR_EMPTY_ALCOHOL)
+                +NotBlankRule(ERR_BLANK_ALCOHOL)
+            }
+        }
+    }
+    private val volumeValidation by lazy {
+        validation(binding.tilVolume) {
+            rules {
+                +NotEmptyRule(ERR_EMPTY_VOLUME)
+                +NotBlankRule(ERR_BLANK_VOLUME)
+            }
+        }
+    }
+
 
     /**
      * Binds
@@ -93,16 +139,24 @@ class DetailFragment : BaseFragment(R.layout.fragment_note_detail) {
      */
     private fun setupApplyButtonListener() {
         binding.btnSave.setOnClickListener {
-            with(binding) {
-                vm.addOrEditCocktail(
-                    tietCocktailTitle.text.toString(),
-                    tietRecipe.text.toString(),
-                    tietAlcoholPer.text.toString(),
-                    tietVolume.text.toString(),
-                    switchIba.isSelected,
-                    getGlassType(),
-                    getTasteType()
-                )
+            validator(requireActivity()) {
+                listener = object : Validator.OnValidateListener {
+                    override fun onValidateFailed(errors: List<String>) {}
+                    override fun onValidateSuccess(values: List<String>) {
+                        with(binding) {
+                            vm.addOrEditCocktail(
+                                tietCocktailTitle.text.toString(),
+                                tietRecipe.text.toString(),
+                                tietAlcoholPer.text.toString(),
+                                tietVolume.text.toString(),
+                                switchIba.isSelected,
+                                getGlassType(),
+                                getTasteType()
+                            )
+                        }
+                    }
+                }
+                validate(titleValidation, recipeValidation, alcoholValidation, volumeValidation)
             }
         }
     }
@@ -130,19 +184,61 @@ class DetailFragment : BaseFragment(R.layout.fragment_note_detail) {
         }
     }
 
+    private fun setupValidationListeners() {
+        with(binding) {
+            tietCocktailTitle.addTextChangedListener {
+                validator(requireActivity()) {
+                    listener = object : Validator.OnValidateListener {
+                        override fun onValidateFailed(errors: List<String>) {}
+                        override fun onValidateSuccess(values: List<String>) {}
+                    }
+                    validate(titleValidation)
+                }
+            }
+            tietRecipe.addTextChangedListener {
+                validator(requireActivity()) {
+                    listener = object : Validator.OnValidateListener {
+                        override fun onValidateFailed(errors: List<String>) {}
+                        override fun onValidateSuccess(values: List<String>) {}
+                    }
+                    validate(recipeValidation)
+                }
+            }
+            tietAlcoholPer.addTextChangedListener {
+                validator(requireActivity()) {
+                    listener = object : Validator.OnValidateListener {
+                        override fun onValidateFailed(errors: List<String>) {}
+                        override fun onValidateSuccess(values: List<String>) {}
+                    }
+                    validate(alcoholValidation)
+                }
+            }
+            tietVolume.addTextChangedListener {
+                validator(requireActivity()) {
+                    listener = object : Validator.OnValidateListener {
+                        override fun onValidateFailed(errors: List<String>) {}
+                        override fun onValidateSuccess(values: List<String>) {}
+                    }
+                    validate(volumeValidation)
+                }
+            }
+        }
+    }
+
 
     /**
      * Extras
      */
     private fun setGlassType(glass: GlassType) {
-        when(glass) {
+        when (glass) {
             GlassType.SHORT -> binding.spinnerGlass.setSelection(0)
             GlassType.MIDDLE -> binding.spinnerGlass.setSelection(1)
             GlassType.LONG -> binding.spinnerGlass.setSelection(2)
         }
     }
+
     private fun getGlassType(): GlassType {
-        return when(binding.spinnerGlass.selectedItemPosition) {
+        return when (binding.spinnerGlass.selectedItemPosition) {
             0 -> GlassType.SHORT
             1 -> GlassType.MIDDLE
             else -> GlassType.LONG
@@ -150,7 +246,7 @@ class DetailFragment : BaseFragment(R.layout.fragment_note_detail) {
     }
 
     private fun setTasteType(taste: TasteType) {
-        when(taste) {
+        when (taste) {
             TasteType.SWEET -> binding.spinnerTaste.setSelection(0)
             TasteType.SOUR -> binding.spinnerTaste.setSelection(1)
             TasteType.SWEET_SOUR -> binding.spinnerTaste.setSelection(2)
@@ -158,8 +254,9 @@ class DetailFragment : BaseFragment(R.layout.fragment_note_detail) {
             TasteType.SALTY -> binding.spinnerTaste.setSelection(4)
         }
     }
+
     private fun getTasteType(): TasteType {
-        return when(binding.spinnerTaste.selectedItemPosition) {
+        return when (binding.spinnerTaste.selectedItemPosition) {
             0 -> TasteType.SWEET
             1 -> TasteType.SOUR
             2 -> TasteType.SWEET_SOUR
@@ -197,6 +294,15 @@ class DetailFragment : BaseFragment(R.layout.fragment_note_detail) {
 
 
     companion object {
+        private const val ERR_EMPTY_TITLE = R.string.err_empty_title
+        private const val ERR_BLANK_TITLE = R.string.err_empty_title
+        private const val ERR_EMPTY_RECIPE = R.string.err_empty_recipe
+        private const val ERR_BLANK_RECIPE = R.string.err_empty_recipe
+        private const val ERR_EMPTY_ALCOHOL = R.string.err_empty_alcohol
+        private const val ERR_BLANK_ALCOHOL = R.string.err_empty_alcohol
+        private const val ERR_EMPTY_VOLUME = R.string.err_empty_volume
+        private const val ERR_BLANK_VOLUME = R.string.err_empty_volume
+
         private const val COCKTAIL_KEY = "cocktail_key"
 
         fun newInstance(): DetailFragment = DetailFragment()

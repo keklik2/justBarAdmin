@@ -41,14 +41,14 @@ object CocktailAdapter {
                         tvStructure.text = getIngredientsList(vh, item)
                         tvPercent.text =
                             String.format(
-                            getString(vh, R.string.format_alc_percentage),
-                            item.alcoholPer
-                        )
+                                getString(vh, R.string.format_alc_percentage),
+                                item.alcoholPer
+                            )
                         tvMilis.text =
                             String.format(
-                            getString(vh, R.string.format_millis),
-                            item.volume
-                        )
+                                getString(vh, R.string.format_millis),
+                                item.volume
+                            )
                         ivIba.setVisibility(item.isIBA)
                         Glide
                             .with(vh.itemView.context)
@@ -65,7 +65,8 @@ object CocktailAdapter {
             append(getString(vh, R.string.format_alc))
             cocktail.alcoholIngredients.keys.forEach { append(" ").append(it) }
             append("\n")
-            append(getString(vh, R.string.format_taste)).append(" ").append(getString(vh, cocktail.taste.titleRes))
+            append(getString(vh, R.string.format_taste)).append(" ")
+                .append(getString(vh, cocktail.taste.titleRes))
         }.toString()
     }
 

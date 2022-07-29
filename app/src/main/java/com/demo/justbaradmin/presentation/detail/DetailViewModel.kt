@@ -6,6 +6,7 @@ import com.demo.architecture.BaseViewModel
 import com.demo.architecture.dialogs.AppDialogContainer
 import com.demo.architecture.helpers.refactorInt
 import com.demo.architecture.helpers.refactorString
+import com.demo.justbaradmin.R
 import com.demo.justbaradmin.data.Server
 import com.demo.justbaradmin.domain.Cocktail
 import com.demo.justbaradmin.domain.GlassType
@@ -77,16 +78,16 @@ class DetailViewModel @Inject constructor(
                 taste,
                 rRecipe,
                 getListOfCommonCocktails(commonCocktails),
-                getListOfAlternativeRecipes(_alternativeRecipes.value?: mutableListOf())
+                getListOfAlternativeRecipes(_alternativeRecipes.value ?: mutableListOf())
             ),
             onSuccessCallback = {
-                showToast("Success") // replace with resId
+                showToast(getString(R.string.toast_write_success)) // replace with resId
                 exit()
             },
             onErrorCallback = {
                 showAlert(
                     AppDialogContainer(
-                        "Error", // replace with resId
+                        getString(R.string.dialog_title_error), // replace with resId
                         it,
                         positiveBtnCallback = {
 
@@ -125,9 +126,21 @@ class DetailViewModel @Inject constructor(
     }
 
     fun deleteAlcoholIngredient(ingredient: Ingredient) {
-        alcoholIngredients = alcoholIngredients.toMutableList().apply {
-            remove(ingredient)
-        }
+        showAlert(
+            AppDialogContainer(
+                getString(R.string.dialog_title_delete_alcohol),
+                String.format(
+                    getString(R.string.dialog_delete_alcohol),
+                    ingredient.title
+                ),
+                positiveBtnCallback = {
+                    alcoholIngredients = alcoholIngredients.toMutableList().apply {
+                        remove(ingredient)
+                    }
+                },
+                negativeBtnCallback = { }
+            )
+        )
     }
 
     fun addOtherIngredient() {
@@ -137,9 +150,21 @@ class DetailViewModel @Inject constructor(
     }
 
     fun deleteOtherIngredient(ingredient: Ingredient) {
-        otherIngredients = otherIngredients.toMutableList().apply {
-            remove(ingredient)
-        }
+        showAlert(
+            AppDialogContainer(
+                getString(R.string.dialog_title_delete_ingredient),
+                String.format(
+                    getString(R.string.dialog_delete_ingredient),
+                    ingredient.title
+                ),
+                positiveBtnCallback = {
+                    otherIngredients = otherIngredients.toMutableList().apply {
+                        remove(ingredient)
+                    }
+                },
+                negativeBtnCallback = { }
+            )
+        )
     }
 
     fun addCommonCocktail() {
@@ -160,8 +185,17 @@ class DetailViewModel @Inject constructor(
     }
 
     fun deleteAlternativeRecipe(recipe: Recipe) {
-        val list = _alternativeRecipes.value
-        _alternativeRecipes.value = list?.apply { remove(recipe) }
+        showAlert(
+            AppDialogContainer(
+                getString(R.string.dialog_title_delete_recipe),
+                getString(R.string.dialog_delete_recipe),
+                positiveBtnCallback = {
+                    val list = _alternativeRecipes.value
+                    _alternativeRecipes.value = list?.apply { remove(recipe) }
+                },
+                negativeBtnCallback = { }
+            )
+        )
     }
 
     fun addAlternativeIngredient(recipeIndex: Int) {

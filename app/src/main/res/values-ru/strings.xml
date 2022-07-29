@@ -30,4 +30,24 @@
     <string name="toast_login">Вход выполнен успешно</string>
     <string name="toast_register">Регистрация выполнена успешно</string>
     <string name="const_recipe">Рецепт</string>
+    <string name="toast_write_success">Запись в облако выполнена успешно</string>
+    <string name="err_empty_title">Пустой заголовок</string>
+    <string name="err_empty_recipe">Пустой рецепт</string>
+    <string name="err_empty_alcohol">Пустой алкоголь</string>
+    <string name="err_empty_volume">Пустой объём</string>
+    <string name="const_manual">Ручной ввод</string>
+    <string name="const_json">Загрузить JSON</string>
+    <string name="const_list_title">Все Коктейли</string>
+    <string name="dialog_title_delete_alcohol">Удалить алкоголь?</string>
+    <string name="dialog_title_delete_ingredient">Удалить ингредиент?</string>
+    <string name="dialog_delete_ingredient">Вы уверены, что хотите удалить игредиент «%s»?</string>
+    <string name="dialog_delete_alcohol">Вы уверены, что хотите удалить алкоголь «%s»?</string>
+    <string name="dialog_title_delete_recipe">Удалить рецепт?</string>
+    <string name="dialog_delete_recipe">Вы уверены, что хотите удалить рецепт?</string>
+    <string name="dialog_title_delete_cocktail">Удалить коктейль?</string>
+    <string name="dialog_delete_cocktail">Вы уверены, что хотите удалить кокйтель «%s»?</string>
+    <string name="dialog_permission_title">Разрешение</string>
+    <string name="dialog_permission_denied">Без разрешения Вы не сможете пользоваться некоторым функционалом приложения.</string>
+    <string name="toast_json_error">Ошибка при загрузке JSON</string>
+    <string name="toast_json_success">JSON успешно загрузился</string>
 </resources>

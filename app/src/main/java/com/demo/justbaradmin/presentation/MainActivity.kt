@@ -1,11 +1,11 @@
 package com.demo.justbaradmin.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import com.demo.justbaradmin.data.Login
 import com.demo.justbaradmin.R
 import com.demo.justbaradmin.Screens
+import com.demo.justbaradmin.data.Login
 import com.demo.justbaradmin.databinding.ActivityMainBinding
 import com.github.terrakok.cicerone.NavigatorHolder
 import com.github.terrakok.cicerone.Router
@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
-        router.replaceScreen(Screens.ListFragment())
+        router.replaceScreen(Screens.MenuFragment())
 
         if (!Login.isLogged()) router.replaceScreen(Screens.LoginFragment())
     }

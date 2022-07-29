@@ -4,6 +4,7 @@
 
     <!-- Const text -->
     <string name="const_detail_title">Add Cocktail</string>
+    <string name="const_list_title">All Cocktails</string>
     <string name="const_is_iba">Is IBA?</string>
     <string name="const_taste">Taste</string>
     <string name="const_glass_type">Glass Type</string>
@@ -12,6 +13,8 @@
     <string name="const_extra">Extra recipe</string>
     <string name="const_common_cocktails">Common cocktails</string>
     <string name="const_recipe">Recipe</string>
+    <string name="const_manual">Manual Input</string>
+    <string name="const_json">Upload JSON</string>
 
     <!-- Formats -->
     <string name="format_alc">alc: </string>
@@ -41,10 +44,30 @@
     
     <!-- Dialogs -->
     <string name="dialog_title_error">Error occurred</string>
+    <string name="dialog_title_delete_ingredient">Delete ingredient?</string>
+    <string name="dialog_delete_ingredient">Are you sure you want to remove ingredient «%s»?</string>
+    <string name="dialog_title_delete_alcohol">Delete alcohol?</string>
+    <string name="dialog_delete_alcohol">Are you sure you want to remove alcohol «%s»?</string>
+    <string name="dialog_title_delete_recipe">Delete recipe?</string>
+    <string name="dialog_delete_recipe">Are you sure you want to remove recipe?</string>
+    <string name="dialog_title_delete_cocktail">Delete cocktail?</string>
+    <string name="dialog_delete_cocktail">Are you sure you want to remove cocktail «%s»?</string>
+    <string name="dialog_permission_title">Permission</string>
+    <string name="dialog_permission_denied">You may not use some app\'s functional without this permission.</string>
+
 
     <!-- Toasts -->
+    <string name="toast_write_success">Cloud Database performed successfully</string>
     <string name="toast_login">Login performed successfully</string>
     <string name="toast_register">Register performed successfully</string>
+    <string name="toast_json_error">JSON failed to load</string>
+    <string name="toast_json_success">JSON successfully loaded</string>
+
+    <!-- Error -->
+    <string name="err_empty_title">Empty title</string>
+    <string name="err_empty_recipe">Empty recipe</string>
+    <string name="err_empty_alcohol">Empty alcohol</string>
+    <string name="err_empty_volume">Empty volume</string>
 
     <!-- Arrays -->
     <string-array name="tastes">
